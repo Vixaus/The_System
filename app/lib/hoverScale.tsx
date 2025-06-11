@@ -1,0 +1,1 @@
+export const hoverScale = 'hover:scale-110 transition duration-100 ease-in-out'
