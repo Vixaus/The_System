@@ -18,11 +18,14 @@ export function useCheckSession() {
   //   checkSession();
 
 
-  //   const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     if (!session) {
-  //       checkSession();
-  //     }
-  //   });
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+
+        setTimeout(() => {
+          router.push('/login');
+        }, 50);
+      }
+    });
 
   //   return () => {
   //     listener?.subscription?.unsubscribe()
