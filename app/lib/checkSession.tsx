@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { supabase } from '@/supabase-client';
 import { useRouter } from 'next/navigation';
 
-export function CheckSession() {
+export function useCheckSession() {
 
     const router = useRouter()
 

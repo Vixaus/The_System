@@ -15,7 +15,7 @@ import WorkoutList from '../components/WorkoutList'
 import { AddNewButton } from '../components/AddNewButton'
 import AddNew from '../components/Popup/AddNew'
 // Lib
-import { CheckSession } from '../lib/checkSession'
+import { useCheckSession } from '../lib/checkSession'
 
 interface checkRoutine{
   id: number
@@ -122,7 +122,7 @@ const Page = () => {
     fetchSession()
   },[])
 
-  CheckSession()
+  useCheckSession()
 
   return (
     <>

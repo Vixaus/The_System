@@ -11,7 +11,7 @@ import { Box} from '@mui/material'
 // Components
 import NavBar from '../components/NavBar'
 // Lib
-import { CheckSession } from '../lib/checkSession'
+import { useCheckSession } from '../lib/checkSession'
 import { useEffect } from 'react'
 
 
@@ -38,7 +38,7 @@ const Page = () => {
     fetchSession()
   },[])
 
-  CheckSession()
+  useCheckSession()
 
   return (
     <>

@@ -13,7 +13,7 @@ import { Box } from '@mui/material'
 // Component
 import NavBar from '../components/NavBar'
 // Lib
-import { CheckSession } from '../lib/checkSession'
+import { useCheckSession } from '../lib/checkSession'
 
 const Page = () => {
 
@@ -32,7 +32,7 @@ const Page = () => {
     fetchSession()
   })
 
-  CheckSession()
+  useCheckSession()
 
   return (
     <>
