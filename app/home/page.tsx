@@ -1,50 +1,44 @@
 'use client'
-// React
-import { useState, useEffect } from 'react'
-// // Next
-// import { useRouter } from 'next/navigation'
-// // Supabase
-// import { supabase } from '../../supabase-client'
+
+// Next
+import { useRouter } from 'next/navigation'
+// Supabase
+import { supabase } from '../../supabase-client'
 // Framer Motion
 import { AnimatePresence, motion } from 'framer-motion'
 // Mui
 import { Box} from '@mui/material'
 // Components
 import NavBar from '../components/NavBar'
+// Lib
+import { checkSession } from '../lib/checkSession'
+import { useEffect } from 'react'
 
 
 
 const title = 'md:text-[2rem] md:-top-5 md:-translate-y-5 absolute -top-4 -translate-y-4 ml-1 text-xl font-bold'
 
-const page = () => {
+const Page = () => {
 
-      const [session, setSession] = useState<any>(null)
-      // const router = useRouter()
+  const router = useRouter()
+
+  const fetchSession =  async () => {
+      const CurrentSession = await supabase.auth.getSession()
+      const userSession = CurrentSession.data.session
   
-      // const fetchSession =  async () => {
-      //     const CurrentSession = await supabase.auth.getSession()
-      //     const userSession = CurrentSession.data.session
-      //     setSession(userSession)
-      
-      //     if (userSession){
-      //         router.push('/home')
-      //     }
-      //     else{
-      //         router.push('/login')
-      //     }
-      // }
-  
-      // useEffect(() => {
-      //     fetchSession()
-  
-      //     const {data: authListener} = supabase.auth.onAuthStateChange((_event, session) => {
-      //         setSession(session)
-      //     }) 
-  
-      //     return () => {
-      //         authListener.subscription.unsubscribe
-      //     }
-      // },[])
+      if (userSession){
+          router.push('/home')
+      }
+      else{
+          router.push('/login')
+      }
+  }
+
+  useEffect(() => {
+    fetchSession
+  },[])
+
+  checkSession()
 
   return (
     <>
@@ -87,4 +81,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

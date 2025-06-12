@@ -16,7 +16,7 @@ interface Task {
 
 function TaskManager() {
 
-  const [newTask, setNewTask] = useState<{}>({ title: "", description: ""})
+  const [newTask, setNewTask] = useState<{}>({ title: "yo", description: "sup"})
   const [task, setTask] = useState<Task[]>([])
   const [newDescription, setNewDescription] = useState("")
   const [newSession, setNewSession] = useState<any>(null)

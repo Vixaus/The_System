@@ -22,7 +22,7 @@ interface check{
     placeholder: string
 }
 
-export default function({onClose, handleAddNew, vis, title, section, placeholder}:check){
+export default function AddNew({onClose, handleAddNew, vis, title, section, placeholder}:check){
 
 
     const [routineName, setRoutineName] = useState<any>("")

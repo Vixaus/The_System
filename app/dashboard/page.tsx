@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from "../../supabase-client"
 
 
-const page = () => {
+const Page = () => {
     
     const [session, setSession] = useState<any>(null)
     const router = useRouter()
@@ -18,7 +18,7 @@ const page = () => {
         const userSession = CurrentSession.data.session
         setSession(userSession)
     
-        if (userSession){
+        if (session){
             router.push('/supabase')
         }
         else{
@@ -55,4 +55,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

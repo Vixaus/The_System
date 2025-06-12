@@ -14,13 +14,15 @@ import NavBar from '../components/NavBar'
 import WorkoutList from '../components/WorkoutList'
 import { AddNewButton } from '../components/AddNewButton'
 import AddNew from '../components/Popup/AddNew'
+// Lib
+import { checkSession } from '../lib/checkSession'
 
 interface checkRoutine{
   id: number
   routine_name: string
 }
 
-const page = () => {
+const Page = () => {
 
   const router = useRouter()
   const [openAddNew, setOpenAddNew] = useState<boolean>(false)
@@ -122,6 +124,8 @@ const page = () => {
     fetchSession()
   },[])
 
+  checkSession()
+
   return (
     <>
     <NavBar/>
@@ -173,4 +177,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

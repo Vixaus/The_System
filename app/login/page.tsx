@@ -22,17 +22,30 @@ import NotiPopup from '../components/Popup/NotiPopup'
 import { muiTextArea } from '../lib/muiTextArea';
 import { hoverScaleMui } from '../lib/hoverScaleMui'
 
-const login = () => {
+const Page = () => {
 
   const [AuthCheck, setAuthCheck] = useState<boolean>(true)
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  const [session, setSession] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [loadPopup, setLoadPopup] = useState<boolean>(false)
   const [msg, setMsg] = useState<any>(null)
   const [popupType, setPopupType] = useState<any>(null)
   const router = useRouter()
+
+  const fetchSession =  async () => {
+    const CurrentSession = await supabase.auth.getSession()
+    const userSession = CurrentSession.data.session
+
+    setLoading(false)
+
+    if (userSession){
+      router.push('/home')
+    }
+    else{
+      router.push('/login')
+    }
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -78,33 +91,9 @@ const login = () => {
     setEmail("")
     setPassword("")
   }
-      
-  const fetchSession =  async () => {
-    const CurrentSession = await supabase.auth.getSession()
-    const userSession = CurrentSession.data.session
-    setSession(userSession)
 
-    setLoading(false)
-
-    if (userSession){
-      router.push('/home')
-    }
-    else{
-      router.push('/login')
-    }
-  }
-      
   useEffect(() => {
-
     fetchSession()
-
-    const {data: authListener} = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    }) 
-
-    return () => {
-      authListener.subscription.unsubscribe
-    }
   },[])
 
   if(loading){
@@ -219,4 +208,4 @@ const login = () => {
   }
 }
 
-export default login
+export default Page

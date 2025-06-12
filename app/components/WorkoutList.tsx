@@ -27,7 +27,7 @@ interface workout{
 
 const IconBg = "size-[30px] rounded-lg flex place-items-center justify-center"
 
-const page = ({handleRemove = () => null, exercise_id = 0, remove_key = 0, title='Leg day', edit='Manage', page=1}: workout) => {
+const WorkoutList = ({handleRemove = () => null, exercise_id = 0, remove_key = 0, title='Leg day', edit='Manage', page=1}: workout) => {
 
     const [visPage1, setPage1] = useState<boolean>(false)
     const [visPage2, setPage2] = useState<boolean>(false)
@@ -123,4 +123,4 @@ const page = ({handleRemove = () => null, exercise_id = 0, remove_key = 0, title
   )
 }
 
-export default page
+export default WorkoutList
