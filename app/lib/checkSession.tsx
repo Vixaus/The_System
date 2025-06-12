@@ -1,30 +1,34 @@
-'use client'
+'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { supabase } from '@/supabase-client';
 import { useRouter } from 'next/navigation';
 
 export function useCheckSession() {
+  const router = useRouter();
 
-    const router = useRouter()
-    const [ready, setReady] = useState(false)
+  useEffect(() => {
 
-   useEffect(() => {
-    const listener = supabase.auth.onAuthStateChange((_event, session) => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        setReady(true)
+        router.push('/login');
+      }
+    };
+    checkSession();
+
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+
+        setTimeout(() => {
+          router.push('/login');
+        }, 50);
       }
     });
 
     return () => {
-      listener.data?.subscription?.unsubscribe()
+      listener?.subscription?.unsubscribe()
     };
-}, []);
-
-  useEffect(() => {
-      if (ready) {
-        router.push('/login')
-      }
-    }, [ready]);
-
+  }, []);
 }
