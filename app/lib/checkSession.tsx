@@ -8,15 +8,16 @@ export function useCheckSession() {
 
     const router = useRouter()
 
-    useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+   useEffect(() => {
+    const listener = supabase.auth.onAuthStateChange((_event, session) => {
       if (!session) {
         router.push('/login');
       }
     });
 
     return () => {
-      authListener.subscription.unsubscribe();
+      listener.data?.subscription?.unsubscribe();
     };
-  }, []);
+}, []);
+
 }
