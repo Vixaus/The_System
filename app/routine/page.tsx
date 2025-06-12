@@ -15,7 +15,7 @@ import WorkoutList from '../components/WorkoutList'
 import { AddNewButton } from '../components/AddNewButton'
 import AddNew from '../components/Popup/AddNew'
 // Lib
-import { checkSession } from '../lib/checkSession'
+import { CheckSession } from '../lib/checkSession'
 
 interface checkRoutine{
   id: number
@@ -110,9 +110,7 @@ const Page = () => {
                     ))
                 }
       })
-      .subscribe((status) => {
-
-      })
+      .subscribe()
 
     return () => {
       channel.unsubscribe();
@@ -124,7 +122,7 @@ const Page = () => {
     fetchSession()
   },[])
 
-  checkSession()
+  CheckSession()
 
   return (
     <>

@@ -35,21 +35,20 @@ const WorkoutList = ({handleRemove = () => null, exercise_id = 0, remove_key = 0
     const [visAddNew2, setvisAddNew2] = useState<boolean>(false)
 
     const handleManage = () => {
-        {page === 1?(
-            setPage1(true)
-        ):(
-            setPage2(true)
-        )
-        }
+    if (page === 1) {
+        setPage1(true);
+    } else {
+        setPage2(true);
+    }
     }
 
+
     const handleEdit = () => {
-        {page === 1?(
-            setvisAddNew1(true)
-        ):(
-            setvisAddNew2(true)
-        )
-        }
+    if (page === 1) {
+        setvisAddNew1(true);
+    } else {
+        setvisAddNew2(true);
+    }
     }
 
     const handleEditRoutine = async (name: string) => {

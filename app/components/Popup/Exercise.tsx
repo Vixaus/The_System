@@ -126,9 +126,7 @@ export default function Exercise({routine_id, vis, onClose}: check) {
             ))
         }
       })
-      .subscribe((status) => {
-
-  })
+      .subscribe()
 
     return () => {
       channel.unsubscribe();

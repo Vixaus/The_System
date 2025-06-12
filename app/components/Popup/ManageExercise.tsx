@@ -161,9 +161,7 @@ export default function ManageExercise({exerciseName, exercise_id, vis, onClose}
                     ))
                 }
             })
-            .subscribe((status) => {
-
-            })
+            .subscribe()
 
         return () => {
             channel.unsubscribe();

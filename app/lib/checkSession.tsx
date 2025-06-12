@@ -1,9 +1,8 @@
-import React from 'react'
 import { useEffect } from 'react';
 import { supabase } from '@/supabase-client';
 import Router from 'next/router';
 
-export function checkSession() {
+export function CheckSession() {
     useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!session) {
