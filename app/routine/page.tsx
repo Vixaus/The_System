@@ -141,8 +141,8 @@ const Page = () => {
 
         <h1 className='text-[2rem] font-bold mb-2'>Routine</h1>
 
-        <Box className='relative h-full bg-gray-800 rounded-xl'>
-          <Box className='md:p-4 h-full flex flex-col gap-2 overflow-scroll scrollbar-hide pb-36 p-2'>
+        <Box className='relative h-full min-h-0 bg-gray-800 rounded-xl'>
+          <Box className='md:p-4 h-full flex flex-col gap-2 overflow-auto scrollbar-hide pb-36 p-2'>
             <AnimatePresence>
               {routineList.map((list) => (
                 <motion.div

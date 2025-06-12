@@ -245,8 +245,8 @@ export default function ManageExercise({exerciseName, exercise_id, vis, onClose}
                         <AddNewButton title='Record New Exercise'/>
                     </button>
                 </Box>               
-                <Box className='bg-transparent rounded-xl w-full h-full flex flex-col overflow-scroll scrollbar-hide pb-24 px-6 py-5'>
-                    <Box className='flex flex-col h-full w-full overflow-scroll scrollbar-hide gap-3'>
+                <Box className='bg-transparent rounded-xl w-full h-full flex flex-col overflow-auto scrollbar-hide pb-24 px-6 py-5'>
+                    <Box className='flex flex-col h-full w-full overflow-auto scrollbar-hide gap-3'>
                         <AnimatePresence>
                             {recordList.map((list) => (
                                 <motion.div
