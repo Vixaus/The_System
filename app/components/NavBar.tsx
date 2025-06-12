@@ -56,6 +56,7 @@ const NavBar = () => {
 
     const signOut = async () => {
         await supabase.auth.signOut()       
+        router.push('/login')
     }
 
   return (
