@@ -63,7 +63,7 @@ const Page = () => {
                           md:h-[100vh-100px] md:px-[50px]'>
             <Box className='md:mb-10 relative bg-gray-700 col-span-2 row-span-5 rounded-xl mb-5 flex place-items-center'>
               <h1 className={`${title}`}>Routine Preview</h1>
-              <Box className='flex flex-wrap overflow-scroll size-[85%] rounded-xl mx-auto scrollbar-hide'>
+              <Box className='flex flex-wrap size-[85%] rounded-xl mx-auto overflow-auto scrollbar-hide'>
               
               </Box>
 
