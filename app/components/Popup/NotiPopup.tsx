@@ -74,7 +74,7 @@ export default function NotiPopup({vis=false, message="progressing", type = "pro
         <Box className='fixed inset-0 z-50 bg-black/30 backdrop-blur-sm min-h-screen grid place-items-center'>
             <motion.div 
                 layout
-                className='md:size-[500px] w-[80%] h-[35%] bg-white rounded-xl flex flex-col place-items-center justify-center'
+                className='md:size-[500px] size-[325px] bg-white rounded-xl flex flex-col place-items-center justify-center'
                 key='noti'
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
