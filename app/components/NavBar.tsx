@@ -19,14 +19,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
 // Component
 import NavBarIcon from './NavBarIcon';
-// Lib
-import { hoverScale } from '../lib/hoverScale';
-
-
-
-
-const textHover = `${hoverScale} w-fit`
-
 
 const NavBar = () => {
 
