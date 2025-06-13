@@ -38,23 +38,28 @@ const NavBar = () => {
       setMenu(!menu)
     }
 
-    const handleHome = () => {
+    const handleHome = (e: any) => {
+      e.preventDefault()
       router.push('/home')
     }
 
-    const handleRoutine = () => {
+    const handleRoutine = (e: any) => {
+      e.preventDefault()
       router.push('/routine')
     }
 
-    const handleStreak = () => {
+    const handleStreak = (e: any) => {
+      e.preventDefault()
       router.push('/streak')
     }
 
-        const handleRank = () => {
+    const handleRank = (e: any) => {
+      e.preventDefault()
       router.push('/rank')
     }
 
-    const signOut = async () => {
+    const signOut = async (e: any) => {
+      e.preventDefault()
         await supabase.auth.signOut()
         router.push('/login')       
     }
@@ -64,21 +69,21 @@ const NavBar = () => {
     <Box className='md:flex hidden fixed min-h-full bg-gray-800 justify-end px-5 w-[75px]'>
       <Box className='relative top-3 right-1/2 translate-x-1/2 translate-y-3'>
         <Box className='h-full flex flex-col mt-10 gap-8'>
-          <button onClick={() => {handleHome()}}>
+          <button onClick={(e) => {handleHome(e)}}>
             <NavBarIcon Icon={HomeIcon} TextIcon='Home'/>
           </button>
-          <button onClick={() => {handleRoutine()}}>
+          <button onClick={(e) => {handleRoutine(e)}}>
             <NavBarIcon Icon={FitnessCenterIcon} TextIcon='Routine'/>
           </button>   
-          <button onClick={() => {handleStreak()}}>
+          <button onClick={(e) => {handleStreak(e)}}>
             <NavBarIcon Icon={WhatshotIcon} TextIcon='Streak'/>
           </button>
-          <button onClick={() => {handleRank()}}>
+          <button onClick={(e) => {handleRank(e)}}>
             <NavBarIcon Icon={MilitaryTechIcon} TextIcon='Rank'/>
           </button>
           <Box className='h-[100%] flex flex-col-reverse pb-[100px] gap-5 mb-10'>
             <NavBarIcon Icon={SettingsIcon} TextIcon='Setting'/>
-            <button onClick={signOut}>
+            <button onClick={(e) => {signOut(e)}}>
               <NavBarIcon Icon={ExitToAppIcon} TextIcon='Logout'/>
             </button>
           </Box>
@@ -86,40 +91,43 @@ const NavBar = () => {
       </Box>
     </Box>
 
-    <Box className='max-md:flex hidden min-w-full bg-gray-800 justify-start px-5 h-[65px]'>
-      <button onClick={handleMenu} className='mr-2'>
+    <Box className='max-md:flex hidden relative z-50 min-w-full bg-gray-800 justify-start h-[65px]'>
+      <button onClick={handleMenu} className='ml-5'>
         <NavBarIcon Icon={MenuIcon}/>
       </button>
       <AnimatePresence>
         {menu && (
-          <motion.div
+          <motion.div 
+            className='absolute w-screen top-[65px] bg-gray-800 text-white'
             layout
-            className='z-50'
             key='navbar'
             initial={{ y: 0, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-          <Box className='flex flex-col gap-5 justify-evenly absolute top-[25px] right-0 translate-y-[25px] translate-x-0 w-screen bg-gray-800 my-2 font-semibold text-white
-                  shadow-md shadow-gray-700 p-5 z-50'>
-            <button onClick={() => {handleHome()}}>
-              <h1 className={`${textHover}`}>Home</h1>
-            </button>
-            <button onClick={() => {handleRoutine()}}>
-              <h1 className={`${textHover}`}>Routine</h1>
-            </button>
-            <button onClick={() => {handleStreak()}}>
-              <h1 className={`${textHover}`}>Streak</h1>
-            </button>
-            <button onClick={() => {handleRank()}}>
-              <h1 className={`${textHover}`}>Rank</h1>
-            </button>
-            <h1 className={`${textHover}`}>Setting</h1>
-            <button onClick={signOut}>
-              <h1 className={`${textHover}`}>Logout</h1>
-            </button>
-          </Box>
+
+            <Box className='flex flex-col'>
+              <button onClick={(e) => {handleHome(e)}} className='p-3 border-t-[1px] border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Home</h1>
+              </button>
+              <button onClick={(e) => {handleRoutine(e)}} className='p-3 border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Routine</h1>
+              </button>
+              <button onClick={(e) => {handleStreak(e)}} className='p-3 border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Streak</h1>
+              </button>
+              <button onClick={(e) => {handleRank(e)}} className='p-3 border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Rank</h1>
+              </button>
+              <button className='p-3 border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Setting</h1>
+              </button>
+              <button onClick={(e) => {signOut(e)}} className='p-3 border-b-[1px] border-white/20'>
+                <h1 className='text-left'>Sign Out</h1>
+              </button>
+            </Box>
+
           </motion.div>
         )}
       </AnimatePresence>

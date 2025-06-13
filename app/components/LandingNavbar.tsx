@@ -8,6 +8,7 @@ import { Box } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 // Lib
 import { hoverScaleMui } from '../lib/hoverScaleMui';
+import { hoverScale } from '../lib/hoverScale';
 
 const page = () => {
 
@@ -21,22 +22,22 @@ const page = () => {
   return (
     <>
     <Box className='md:flex hidden'>
-      <Box className='bg-gray-800 w-screen h-[70px] flex text-white place-items-center'>
-        <Box className='w-full ml-[20px] flex place-items-center gap-5'>
+      <Box className='bg-gray-900 w-screen h-[70px] flex text-white place-items-center shadow-md shadow-gray-800'>
+        <Box className='w-full ml-[40px] flex place-items-center gap-5'>
             <Box className='flex-1'>
-              <button className='text-xl font-bold cursor-pointer'>The System</button>
+              <button className='text-2xl font-bold cursor-pointer hover:text-white/80'>The System</button>
             </Box>
 
           <Box className='flex-1 flex flex-row-reverse gap-10 mr-[40px]'>
-            <button className='text-lg cursor-pointer'> Login </button>
-            <button className='text-lg cursor-pointer'> Contact </button>
-            <button className='text-lg cursor-pointer'> Home </button>
+            <button className={`text-lg cursor-pointer hover:font-bold ${hoverScale}`}> Login </button>
+            <button className={`text-lg cursor-pointer hover:font-bold ${hoverScale}`}> Contact </button>
+            <button className={`text-lg cursor-pointer hover:font-bold ${hoverScale}`}> Home </button>
           </Box>
         </Box>
       </Box>
     </Box>
     <Box className='max-md:flex hidden'>
-      <Box className='relative bg-gray-800 w-screen h-[65px] flex text-white place-items-center'>
+      <Box className='relative bg-gray-900 w-screen h-[65px] flex text-white place-items-center shadow-md shadow-gray-800'>
           <Box className='ml-[20px] flex place-items-center gap-5'>
             <button onClick={(e) => handleMenu(e)}>
               <MenuIcon sx={{...hoverScaleMui(1.1)}}/>

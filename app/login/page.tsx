@@ -18,6 +18,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 // Components
 import NotiPopup from '../components/Popup/NotiPopup'
+import LandingNavBar from '../components/LandingNavbar'
 // Lib
 import { muiTextArea } from '../lib/muiTextArea';
 import { hoverScaleMui } from '../lib/hoverScaleMui'
@@ -107,21 +108,23 @@ const Page = () => {
   }else {
     return (
     <>
-      <Box className="grid place-items-center min-h-screen bg-gray-900">
-        <Box className='md:size-[600px] md:px-10 flex flex-col rounded-2xl overflow-hidden bg-gray-800 backdrop-blur-xl border-2 border-gray-600 shadow-xl shadow-gray-800 px-6 text-white'>
-        <Box className="md:my-10 my-5">
-          <h1 className='md:mb-2 text-[2rem] md:text-[40px] font-semibold bg-customBlue'>{AuthCheck? "Sign Up":"Sign In"}</h1>
+      <LandingNavBar/>
+      <Box className="md:h-[calc(100vh-70px)] grid place-items-center h-[calc(100vh-65px)] bg-gray-900">
+        <Box className='md:size-[600px] md:px-10 md:py-0 md:backdrop-blur-xl md:bg-gray-800 md:shadow-xl md:shadow-gray-800 md:border-2 md:border-gray-600 
+                        p-10 w-screen flex flex-col rounded-2xl overflow-hidden text-white'>
+        <Box className="my-10">
+          <h1 className='md:mb-2 text-[2rem] md:text-[40px] font-semibold bg-customBlue'>{AuthCheck? "Sign Up":"Login"}</h1>
           <Box className="flex flex-row gap-3">
             <h2 className='md:text-[20px] flex flex-row'>{AuthCheck? "Already have an account?" : " Don't have an account?"}</h2>
             <button className="md:text-[20px] underline hover:cursor-pointer transition duration-100 ease-in-out hover:scale-110"
               onClick={() => handleAuth()}
             >
-              Click here
+              {AuthCheck? "Login" : "Sign Up"}
             </button>
           </Box>
         </Box>
 
-        <Box component='form' className="md:gap-8 flex flex-col gap-4" onSubmit={handleSubmit}>
+        <Box component='form' className="md:gap-8 flex flex-col gap-5" onSubmit={handleSubmit}>
           <Box className="flex flex-col">
             <label htmlFor="email" className="md:text-[23px] mb-[0.5rem]"><AccountCircle sx={{fontSize:{md:'30px'}, marginBottom:'5px'}}></AccountCircle> Email</label>
             <TextField
@@ -185,6 +188,10 @@ const Page = () => {
             variant="contained"
             type="submit"
             sx={{
+              fontSize: {
+                xs: '14px',
+                md: '16px'
+              },
               backgroundColor: grey[100],
               color: 'black',
               borderRadius: '0.5rem',
