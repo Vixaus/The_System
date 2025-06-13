@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 // Lib
 import { hoverScaleMui } from '../lib/hoverScaleMui';
 
-const page = () => {
+const Page = () => {
 
   const [menu, setMenu] = useState<boolean>(false)
 
@@ -74,4 +74,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
